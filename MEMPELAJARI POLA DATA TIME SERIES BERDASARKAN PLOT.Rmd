@@ -1,0 +1,301 @@
+---
+title: "MEMPELAJARI POLA DATA TIME SERIES BERDASARKAN PLOT"
+author: "Zilda Ainun Tazkia, Atira Keisha Belva Armanda Fadhilah"
+date: "2024-12-03"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+::: {style="text-align: justify;"}
+# Apa itu Data Time Series?
+
+Time series atau deret waktu adalah himpunan observasi data terurut dalam waktu (Hanke&Winchern, 2005: 58). Deret waktu atau time series merupakan sekumpulan data atau informasi yang terkumpul secara berkala atau dalam interval waktu tertentu, seringkali dalam waktu singkat seperti jam, hari, atau minggu. Metode time series merupakan metode peramalan dengan menggunakan analisa pola hubungan antara variabel yang akan dipekirakan dengan variabel waktu. Peramalan suatu data time series perlu memperhatikan tipe atau pola data. Secara umum terdapat empat macam pola data time series yaitu random, trend, musiman,dan siklis (Hanke dan Wichren, 2005: 158).
+
+# Karakteristik Data Time Series
+
+Data time series memiliki karakteristik unik yang membedakannya dari data lain. Berikut beberapa karakteristik penting:
+
+-   **Urutan Waktu**
+
+Data time series selalu diurutkan berdasarkan waktu, baik itu harian, mingguan, bulanan, tahunan, atau interval waktu lainnya.
+
+-   **Dependensi Waktu**
+
+Data time series seringkali menunjukkan ketergantungan pada data sebelumnya. Misalnya, harga saham hari ini dapat dipengaruhi oleh harga saham kemarin.
+
+-   **Pola dan Trend**
+
+Data time series seringkali menunjukkan pola dan tren tertentu. Misalnya, penjualan produk tertentu dapat meningkat selama musim liburan.
+
+-   **Variasi**
+
+Data time series dapat mengalami variasi atau fluktuasi yang tidak teratur. Misalnya, jumlah pengunjung website dapat dipengaruhi oleh faktor-faktor acak seperti cuaca atau peristiwa khusus.
+
+# Pengertian Jenis - Jenis Pola Data Time Series
+
+-   **Trend**
+
+Tipe data trend ialah ketika observasi naik atau menurun pada perluasan periode suatu waktu. Kecenderungan umum deret waktu untuk meningkat, menurun, atau mandek dalam jangka waktu yang lamawaktu disebut sebagai Trend Sekuler atau hanya Trend. Dengan demikian, dapat dikatakan bahwa trend adalah jangka panjang pergerakan baik naik maupun turun data dalam deret waktu. Dalam pembicaraan tentang trend kita harus memperhatikan berapa banyak data yang ada dan juga penilain kita terhadap definisi jangka panjang. Data berpola trend apabila terdapat hubungan (korelasi) signifikan antara nilai data yang berurutan. Untuk mengetahui korelasi signifikan tersebut dapat dilakukan dengan menggunakan uji t (data \<30) atau uji Z (data \>30) dengan interval dari koefisien:0±2 (1/n).
+
+-   **Seasonal**
+
+Tipe data musiman (seasonal) ialah ketika observasi dipengaruhi oleh musiman, yang ditandai dengan adanya pola perubahan yang berulang secara otomatis dari tahun ke tahun. Data pola musiman apabila data berfluktuasi dalam suatu interval waktu tertentu, maka data berpola musiman. Faktor penting yang menyebabkan data musiman adalah kondisi iklim, cuaca, dan kebiasaan. Data bersifat musiman jika autocorrelation coefficient signifikan pada interval waktu harian, karena data yang digunakan adalah data harian.
+
+-   **Siklikal**
+
+Tipe data siklikal ditandai dengan adanya fluktuasi bergelombang data yang terjadi di sekitar garis trend. siklikal, yaitu suatu pola dalam data yang terjadi setiap beberapa tahun yang ditandai dengan adanya fluktuasi atau siklus dari data runtut waktu akibat perubahan kondisi ekonomi yang terjadi berulang. Data mengandung pola data siklikal apabila fluktuasi permintaan secara jangka panjang membentuk pola sinusoid (gelombang). Pola siklikal mirip dengan pola musiman. Pada pola musiman tidak harus membentuk pola gelombang, bentuknya dapat bervariasi, namun waktunya akan berulang. Variasi siklus dalam deret waktu menggambarkan perubahan jangka menengah dalam deret yang disebabkan oleh keadaan yang berulang dalam siklus. Durasi siklus meluas selama periode yang lebih lama, biasanya dua tahun atau lebih.
+
+-   **Random**
+
+Tipe data random ditandai dengan tidak adanya aturan pada fluktuasi data dan bersifat acak. Data random, yaitu pola acak yang disebabkan oleh peristiwa yang tidak bisa diprediksi atau tidak beraturan. Pola acak adalah rangkaian waktu yang menunjukkan pola yang tak teratur yang disebabkan oleh faktor-faktor di luar dugaan atau tidak dapat diprediksi, seperti perang, pemogokan, gempa bumi, banjir. Tidak ada statistik yang pasti teknik untuk mengukur fluktuasi acak dalam deret waktu. Data berpola random apabila fluktuasi data bersifat acak.
+
+# Visualisasi Jenis Pola Data Time Series
+
+Berikut merupakan visualisasi pada empat jenis pola data time series.
+
+-   Trend (T)
+
+Pola trend (T) terjadi bila ada kenaikan atau penurunan dari data secara gradual dari gerakan datanya dalam kurun waktu panjang.
+
+![](images/Screenshot%202024-12-08%20083633-01.png)
+
+-   Seasonal (S)
+
+Seasonality (S) terjadi bila pola datanya berulang sesudah suatu periode tertentu seperti hari, mingguan, bulanan, triwulan dan tahun.
+
+![](images/Screenshot%202024-12-08%20085611.png)
+
+-   Siklikal (C)
+
+Pola Siklis (C) terjadi bilamana terdapat kenaikan atau penurunan sekuler jangka panjang pada data.Pola data siklis juga terjadi jika datanya dipengaruhi oleh fluktuasi ekonomi jangka panjang seperti yang berhubungan dengan siklus bisnis.
+
+![](images/Screenshot%202024-12-08%20085821.png)
+
+-   Random (R)
+
+Pola random (R) adalah pergerakan pola yang disebabkan oleh pengaruh yang tidak dapat diprediksi, tidak teratur dan tidak berulang dalam pola tertentu.
+
+![](images/Screenshot%202024-12-08%20085917.png)
+
+# Cara Membuat Visualisasi Pola Data Time Series Menggunakan R Studio
+
+Kita akan membuat visualisasi pola data time series menggunakan R studio dengan menggunakan fitur time series yang tersedia pada R. Dengan ini, akan memudahkan kita dalam membuat visualisasi datanya serta dengan memanfaatkan R markdown untuk mempermudah kita dalam mendapatkan output visualisasi data yang sesuai dan mudah untuk menginterpretasikanya.
+
+**Berikut merupakan fungsi-fungsi R untuk membuat plot time series:**
+
+-   **ts( )**
+
+```{r, echo=TRUE, results='hide'}
+ts()
+```
+
+Fungsi ts() digunakan untuk membuat data menjadi data time series. Dalam fungsi ini juga dapat menentukan frekuensi (frequency) dan waktu mulai (start) serta waktu selesai (end).
+
+```{r, echo=TRUE, results='hide'}
+ts(data= , start = , end = , frequency = )
+```
+
+-   **start ()**
+
+Fungsi start () , adalah fungsi yang menentukan kapan data time series ini dimulai jika data memiliki frekuensi tertentu (bulan,tahun,kuartal). Waktu awal ini menunjukkan kapan data time series tersebut berawal, sesuai dengan frekuensi (frequency) yang telah ditentukan.
+
+```{r, echo=TRUE, results='hide'}
+ts(data= , start = )
+```
+
+```{r, echo=TRUE, results='hide'}
+# Contoh Data Perbulan
+data <- 1:12
+data_ts <- ts(data, start = c(2022, 1), frequency = 12)  # Dimulai dari bulan Januari 2020
+```
+
+```{r, echo=TRUE, results='hide'}
+# Contoh Data Kuartal
+data <- c(1.5, 2.3, 3.1, 4.0)
+data_ts <- ts(data, start = c(2020, 2), frequency = 4)  # Data kuartalan ke-2 di Tahun 2020
+```
+
+```{r, echo=TRUE, results='hide'}
+# Contoh Data Tahunan
+data <- c(2015, 2016, 2017)
+data_ts <- ts(data, start = 2015, frequency = 1)  # Data Tahunan dimulai dari Tahun 2015
+```
+
+-   **end ()**
+
+Fungsi end (), adalah fungsi yang berkesebalikan dengan fungsi start. Fungsi ini adalah fungsi yang menentukan kapan data time series akan dihentikan. Waktu akhir ini menunjukkan kapan data time series tersebut berakhir, sesuai dengan frekuensi (frequency) yang telah ditentukan.
+
+```{r, echo=TRUE, results='hide'}
+ts(data= , start = , end = )
+```
+
+```{r, echo=TRUE, results='hide'}
+data <- 1:12
+data_ts <- ts(data, start = c(2022, 1), end = c(2022,12), frequency = 12)  # Data Bulanan Berakhir di Desember
+```
+
+-   **frequency ()**
+
+Fungsi frequency (), adalah fungsi untuk mengatur atau mendapatkan jumlah observasi (data) 'n' dalam satu periode pada data time series. Konsep ini penting untuk menentukan pola musiman (seasonality) dalam data.
+
+```{r, echo=TRUE, results='hide'}
+ts(data, start = , end = , frequency = )
+```
+
+```{r, echo=TRUE, results='hide'}
+data <- 1:12
+ts_data <- ts(data, start = c(2022, 1), end = c(2022,12), frequency = 12)  # Data Bulanan dalam 12 Bulan pada Tahun 2022
+
+```
+
+-   **decompose ()**
+
+Fungsi decompose (), dekomposisi deret waktu / decomposing time series adalah fungsi yang berguna untuk mendapatkan gambaran awal mengenai data time series secara umum melalui perspekfif yang berbeda. Melalui fungsi ini, kita dapat mengetahui masing masing visualisasi pola data time series trend, siklikal, seasonal, dan random/horizontal dari sebuah data observasi time series secara bersamaan.
+
+```{r, echo=TRUE, error= TRUE, results='hide'}
+decompose(ts_object, type = "additive") 
+```
+
+Model data "additive" adalah model yang digunakan jika komponen seasonal dan random/horizontal adalah konstan, yang dimana keduanya tidak bergantung pada nilai trend. Dapat disimpulkan juga ketika komponen seasonal dan random/horizontal tidak terlalu mempengaruhi data observasi dan fluktuasi seasonal tetap konstan meskipun tren meningkat atau menurun.
+
+```{r, echo=TRUE, results= 'hide', error=TRUE}
+decompose(data= , type = "multiplicative")
+```
+
+Model data "multiplicative" adalah model yang digunakan jika komponen seasonal dan trend memiliki memiliki suatu hubungan yang proporsional. Dapat disimpulkan juga ketika besarnya fluktuasi seasonal meningkat atau menurun seiring dengan perubahan trend.
+
+# Contoh Studi Kasus Data Penjualan Menggunakan Pola Data Time Series dan Interpretasinya
+
+## TREND
+
+Pola data trend biasanya berbentuk kenaikan atau penurunan dalam waktu tertentu, sebagai contoh berikut merupakan data penjualan suatu produk makanan dari minggu ke minggu selama 12 minggu:
+
+![](images/1_pygL5N5jkPwnvw5Ne_T68Q.webp)
+
+```{r, echo=TRUE}
+# Membuat data
+week <- 1:12
+sales <- c(235, 218, 276, 348, 340, 433, 599, 646, 744, 832, 890, 920)
+
+# Membuat data frame
+data <- data.frame(week, sales)
+
+# Mengubah data menjadi time series
+sales_ts <- ts(sales, start = 1, frequency = 1)
+
+# Plot data time series
+plot(sales_ts, type = "o", col = "blue", lwd = 2,
+     xlab = "Week", ylab = "Sales of Product",
+     main = "Time Series Data - Sales Trend")
+
+# Menambahkan model linear untuk melihat tren
+trend <- lm(sales ~ week, data = data)
+abline(trend, col = "red", lwd = 2)
+
+# Menampilkan summary dari model
+summary(trend)
+```
+
+Dari grafik pola data trend di atas, dapat disimpulkan bahwa pada minggu ke- 1 sampai dengan minggu ke-4, penjualan produk makanan relatif rendah namun mengalami peningkatan. Tetapi dari minggu ke-5 hingga minggu ke-12 penjualan produk makanan menunjukkan peningkatan yang lebih tajam, mencerminkan adanya akselerasi pertumbuhan penjualan produk. Trend menunjukkan bahwa penjualan cenderung meningkat secara konsisten dari minggu pertama hingga minggu terakhir, hal ini juga menandakan bahwa, secara keseluruhan, ada tren positif dalam penjualan produk.
+
+## SEASONAL
+
+Pola seasonal terjadi ketika variabel mengalami pola yang berulang selama periode yang berurutan. Sebagai contoh berikut merupakan data pemjualan baju muslim selama tiga tahun terakhir yang diperkirakan penjualannya setiap bulan ramadan selalu mengalami kenaikan karena biasanya saat ramadan dan lebaran kebiasaan umat muslim Indonesia akan membeli baju baru:
+
+![](images/1_rULVmIplLRQ5DUBvgOejxw.webp)
+
+```{r, echo=TRUE}
+# Membuat data
+Year <- c(rep(1, 4), rep(2, 4), rep(3, 4))
+Quarter <- rep(1:4, 3)
+Sales <- c(135, 110, 163, 90, 120, 130, 171, 100, 140, 122, 175, 110)
+
+# Membuat data frame
+data <- data.frame(Year, Quarter, Sales)
+
+# Mengubah data menjadi data time series (frequency = 4 karena data kuartalan)
+sales_ts <- ts(Sales, start = c(1, 1), frequency = 4)
+
+# Plot data time series
+plot(sales_ts, type = "o", col = "blue", lwd = 2,
+     xlab = "Time (Year-Quarter)", ylab = "Sales",
+     main = "Quarterly Sales Time Series")
+```
+
+Dari grafik pola data seasonal di atas, dapat disimpulkan bahwa pada kuartal 1 (Q1) Penjualan mulai baik tetapi sedikit lebih rendah dibandingkan kuartal lainnya, meskipun ada peningkatan setiap tahun (135, 120, 140), sedangkan pada kuartal 3 (Q3) Penjualan cenderung meningkat lebih tajam pada kuartal ini (163, 171, 175) yang mungkin menunjukkan adanya musim atau promosi yang lebih kuat pada kuartal ini, dan pada kuartal 4 (Q4) Penjualan cenderung menurun setiap tahunnya, dengan penurunan signifikan di tahun pertama (90, 100, 110).
+
+```{r, echo=TRUE}
+# Menambahkan dekomposisi untuk pola seasonal
+decomp <- decompose(sales_ts, type = "additive")
+
+# Plot dekomposisi
+plot(decomp)
+
+# Melihat komponen seasonal
+decomp$seasonal
+```
+
+Hasil grafik dekomposisi di atas menyatakan bahwa Trend meningkat secara stabil dari tahun 1 ke tahun 3. Ini berarti penjualan baju muslim terus tumbuh secara jangka panjang. Seasonal menunjukkan penjualan tertinggi selalu terjadi di kuartal ke-3, sedangkan penjualan terendah terjadi di kuartal ke-4. Residual tidak memiliki pola yang signifikan, artinya variasi data sebagian besar dapat dijelaskan oleh tren dan musiman.
+
+## RANDOM/HORIZONTAL
+
+Pola random/horizontal adalah pola data time series yang dimana data berfluktuatif secara acak di sekitar rata-rata konstan dari waktu ke waktu. Sebagai contoh berikut merupakan data penjualan pakan cat bangunan toko agung dari minggu ke minggu:
+
+![](images/1_uFTtm4SuohZlHrAhy06-Rw.webp)
+
+```{r, echo=TRUE}
+# Membuat data
+week <- 1:12
+sales <- c(177,211,119,231,180,160,200,181,221,200,150,222)
+  
+# Membuat grafik data random
+plot(week, sales, type = "o", pch = 16, col = "red",
+     xlab = "Week", ylab = "Sales of Product",
+     main = "Random Pattern of Sales Data",
+     ylim = c(100, 250),
+     xaxt = "n")
+axis(1, at = week, labels = week)
+grid()
+```
+
+Hasil grafik dari pola data random di atas, dapat disimpulkan bahwa data penjualan cat bangunan toko agung naik turun secara tidak konsisten dari satu minggu ke minggu lainya. Terdapat beberapa lonjakan penjualan cat di minggu ke-3 dan minggu ke-9, dan penurunan tajam dari minggu ke-3 menuju minggu ke-4, dan penjualan cat relatif stabil dengan fluktuasi kecil di minggu ke-5 hingga minggu ke-8.
+
+## SIKLIKAL
+
+Pola cyclical pattern adalah pola yang dimana polanya yang berselang-seling, naik atau turun pada waktu tertentu dalam satu tahun. Sebagai contoh berikut merupakan data permintaan aktual dari beberapa periode waktu ke waktu:
+
+![](images/Screenshot%202024-12-03%20145601.png)
+
+```{r, echo=TRUE}
+# Membuat data
+periode <- 1:24
+permintaan_aktual <- c(100, 110, 112, 109, 100, 90, 88, 89, 99, 109, 113, 108, 
+                       101, 89, 87, 91, 102, 110, 113, 109, 100, 92, 88, 90)
+
+# Membuat data data frame
+data_siklikal <- data.frame(Periode = periode, Permintaan = permintaan_aktual)
+
+# Mengubah data menjadi data time series
+data_siklikal_ts <- ts(permintaan_aktual, start = 1, frequency = 12)
+
+# Plot time series
+plot(data_siklikal_ts, col = "red", lwd = 2, main = "Time Series Permintaan Aktual",
+     xlab = "Periode", ylab = "Permintaan")
+```
+
+Hasil grafik siklikal di atas menggambarkan fluktuasi yang konsisten dalam permintaan, dengan kenaikan dan penurunan secara berulang. Satu siklus berlangsung sekitar 8 periode waktu, artinya permintaan aktual cenderung naik ke puncak dan turun ke lembah dalam durasi tersebut, lalu mengulang pola serupa. Amplitudo atau nilai selisih maksimum dan minimum dalam sikluas relatif stabil, kestabilan amplitudo ini menunjukan bahwa siklus permintaan aktual dalam 12 periode waktu tidak mengalami perubahan yang ekstrim.
+
+```{r, echo=TRUE}
+# Dekomposisi time series
+dekomposisi <- decompose(data_siklikal_ts, type = "additive")
+
+# Plot dekomposisi
+plot(dekomposisi)
+
+# Melihat komponen siklikal
+siklikal <- dekomposisi$random
+```
+
+Hasil grafik dekomposisi di atas menunjukan, trend terlihat agak menurun secara perlahan. Artinya, secara keseluruhan nilai permintaan aktual cenderung menurun dalam ke 12 periode waktu. Seasonal menunjukan siklus musiman yang konsisten dan simetris, dimana nilai permintaan aktual meningkat pada siklus waktu tertentu dan menurun pada siklus waktu lain dengan pola yang sama, hal ini dikarenakan data tersebut menggunakan siklus waktu tahunan. Sedangkan pola random/horizontal pada grafik ini, fluktuasi acaknya relatif kecil yang menunjukkan bahwa data sebagian besar dapat dijelaskan oleh komponen tren dan musiman.
+:::
